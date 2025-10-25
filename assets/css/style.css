@@ -42,7 +42,7 @@ h6 {
   opacity: 0;
   right: 15px;
   bottom: 15px;
-  z-index: 996;
+  z-index: 1;
   background: #149ddd;
   width: 40px;
   height: 40px;
@@ -76,7 +76,7 @@ h6 {
   bottom: 0;
   width: 300px;
   transition: all ease-in-out 0.5s;
-  z-index: 9997;
+  z-index: 1050;
   transition: all 0.5s;
   padding: 0 15px;
   background: #040b14;
@@ -198,7 +198,7 @@ h6 {
   position: fixed;
   right: 15px;
   top: 15px;
-  z-index: 9998;
+  z-index: 1050;
   border: 0;
   font-size: 24px;
   transition: all 0.4s;
@@ -1078,7 +1078,7 @@ section {
   left: 0;
   bottom: 0;
   width: 300px;
-  z-index: 9999;
+  z-index: 1050;
   background: #040b14;
 }
 
