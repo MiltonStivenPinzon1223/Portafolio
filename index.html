@@ -29,6 +29,9 @@
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
 
+  <!-- EmailJS SDK -->
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+
 </head>
 
 <body>
@@ -448,8 +451,58 @@
                 </div>
               </div>
             </section>
-            <!-- End Portfolio Section -->
+          </div>
+        </section>
+        <!-- End Portfolio Section -->
 
+        <!-- ======= Contact Section ======= -->
+        <section id="contact" class="contact section-bg">
+          <div class="container">
+
+            <div class="section-title">
+              <h2>Contacto</h2>
+              <p>¿Tienes una oportunidad o proyecto en mente? Envíame un mensaje.</p>
+            </div>
+
+            <div class="row justify-content-center">
+              <div class="col-lg-8">
+
+                <form id="contactForm" class="php-email-form">
+
+                  <div class="row">
+                    <div class="col-md-6 form-group mb-3">
+                      <input type="text" name="name" class="form-control" placeholder="Nombre completo" required>
+                    </div>
+
+                    <div class="col-md-6 form-group mb-3">
+                      <input type="email" name="email" class="form-control" placeholder="Correo electrónico" required>
+                    </div>
+                  </div>
+
+                  <div class="form-group mb-3">
+                    <input type="text" name="subject" class="form-control" placeholder="Asunto" required>
+                  </div>
+
+                  <div class="form-group mb-3">
+                    <textarea name="message" rows="6" class="form-control" placeholder="Mensaje" required></textarea>
+                  </div>
+
+                  <div class="text-center">
+                    <button type="submit" class="btn btn-primary px-4">
+                      Enviar mensaje
+                    </button>
+                  </div>
+
+                  <div id="formStatus" class="text-center mt-3"></div>
+
+                </form>
+
+              </div>
+            </div>
+
+          </div>
+        </section>
+        <!-- End Contact Section -->
 
   </main><!-- End #main -->
 
@@ -527,6 +580,37 @@
           }
         }
       }
+    });
+  </script>
+
+  <script>
+    (function () {
+      emailjs.init("LFyJ33iJBDm9jpPCG");
+    })();
+
+    const contactForm = document.getElementById("contactForm");
+    const formStatus = document.getElementById("formStatus");
+
+    contactForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      formStatus.innerHTML = "Enviando mensaje...";
+
+      emailjs.sendForm(
+        "service_6ihz4rj",
+        "template_rmo0po3",
+        this
+      )
+        .then(() => {
+          formStatus.innerHTML =
+            "<span class='text-success'>Mensaje enviado correctamente.</span>";
+          contactForm.reset();
+        })
+        .catch((error) => {
+          formStatus.innerHTML =
+            "<span class='text-danger'>Error al enviar el mensaje.</span>";
+          console.error("EmailJS Error:", error);
+        });
     });
   </script>
 </body>
